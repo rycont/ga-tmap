@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <a id="link" href="tmap://search?name=스타벅스">클릭</a>
+    <script>
+        fetch('https://dapi.kakao.com/v2/local/search/keyword.json?query=화천중학교', {
+            headers: {
+                Authorization: 'KakaoAK 49c41da464760f68cca5ef5c380080a7'
+            }
+        }).then(r => r.json()).then(({documents}) => {
+            const {x, y} = documents[0]
+            const name = documents[0].place_name
+            //document.getElementById('link').href = encodeURI(`kakaonavi-sdk://navigate?appkey=3e786f8df14fcfc89d159421a6a7c9b6&apiver=1.0&extras={"KA":"sdk/1.25.2 os/javascript lang/en-US device/MacIntel origin/https%3A%2F%2Fdevelopers.kakao.com"}&param={"destination":{"name":"${name}","x":${x},"y":${y}},"option":{"coord_type":"wgs84"}}`)
+            //document.getElementById('link').href = encodeURI(`tmap://?rGoName=${name}&rGoY=${y}&rGoX=${x}`)
+        })
+        /*Kakao.init('27e7ace0d370a7ed5fdc5977b326540c');
+        Kakao.Navi.start({
+            name: "현대백화점 판교점",
+            x: 127.11205203011632,
+            y: 37.39279717586919,
+            coordType: 'wgs84'
+        })*/
+    </script>
+</body>
+
+</html>
