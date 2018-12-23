@@ -12,13 +12,15 @@
     <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
     <a id="link" href="tmap://search?name=스타벅스">클릭</a>
     <script>
-        fetch('https://dapi.kakao.com/v2/local/search/keyword.json?query=화천중학교', {
+        
+        fetch('https://dapi.kakao.com/v2/local/search/keyword.json?query=location.href.substr(48)', {
             headers: {
                 Authorization: 'KakaoAK 49c41da464760f68cca5ef5c380080a7'
             }
         }).then(r => r.json()).then(({documents}) => {
             const {x, y} = documents[0]
             const name = documents[0].place_name
+            document.getElementById('link').innerHTML = `tmap://search?name=${location.href.substr(48)}`
             //document.getElementById('link').href = encodeURI(`kakaonavi-sdk://navigate?appkey=3e786f8df14fcfc89d159421a6a7c9b6&apiver=1.0&extras={"KA":"sdk/1.25.2 os/javascript lang/en-US device/MacIntel origin/https%3A%2F%2Fdevelopers.kakao.com"}&param={"destination":{"name":"${name}","x":${x},"y":${y}},"option":{"coord_type":"wgs84"}}`)
             //document.getElementById('link').href = encodeURI(`tmap://?rGoName=${name}&rGoY=${y}&rGoX=${x}`)
         })
