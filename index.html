@@ -20,7 +20,7 @@
 
 <body>
     <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-    <a id="link">화면을 클릭해주세요</a>
+    <a id="link">링크가 열리지 않을 경우 화면을 클릭해주세요</a>
     <script>
         const address = location.href.substr(location.href.indexOf('#') + 1)
         fetch(`https://dapi.kakao.com/v2/local/search/keyword.json?query=${address}`, {
